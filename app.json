@@ -79,7 +79,7 @@
     "AUTO_STATUS_MSG": {
       "description": "Type custom message on status reply",
       "required": true,
-      "value": "*SEEN YOUR STATUS BY Zarya-MD*"
+      "value": "*SEEN YOUR STATUS BY ZARYA-MD*"
    
      }, 
     
@@ -99,7 +99,7 @@
     "BOT_NAME": {
       "description": "Type here the bot name.",
       "required": false,
-      "value": "Zarya-MD"
+      "value": "ZARYA-MD"
 
       }, 
 
