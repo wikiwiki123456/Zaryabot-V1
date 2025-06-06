@@ -101,6 +101,7 @@ New bot WhatsApp by dawens boy tech
 </p>
 
 ---
+[deploye!]
 name: Node.js CI
 
 on:
