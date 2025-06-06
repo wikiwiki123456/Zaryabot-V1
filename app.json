@@ -1,8 +1,8 @@
 {
-  "name": "Zarya-MD",
+  "name": "ZARYA-MD",
   "description": "Javascript WhatsApp bot made by dawens boy tech",
   "logo": "https://files.catbox.moe/pbamxw.jpeg",
-  "keywords": ["Zarya-MD"],
+  "keywords": ["ZARYA-MD"],
   "success_url": "/",
 
     "stack": "container",
