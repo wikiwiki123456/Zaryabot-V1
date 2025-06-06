@@ -45,11 +45,11 @@ New bot WhatsApp by dawens boy tech
 ## ⚙️ Deploy Easily
 
 ### 🔑 Get Your Session ID
-[![ZARYA MD SESSION](https://img.shields.io/badge/INCONNU%20-XD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://inconnu-boy-tech-web.onrender.com/)
+[![ZARYA MD SESSION](https://img.shields.io/badge/ZARYA%20-MD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://inconnu-boy-tech-web.onrender.com/)
 
 
 ### 🔑 Get PAIR CODE
-[![Zarya MD PAIR](https://img.shields.io/badge/INCONNU%20-XD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://zarya-5.onrender.com/pair)
+[![Zarya MD PAIR](https://img.shields.io/badge/ZARYA%20-MD%20SESSION-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://zarya-5.onrender.com/pair)
 
 
 ---
