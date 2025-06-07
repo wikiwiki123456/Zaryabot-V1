@@ -65,7 +65,7 @@ cmd({
       `*${mediaType} Uploaded Successfully*\n\n` +
       `*Size:* ${formatBytes(mediaBuffer.length)}\n` +
       `*URL:* ${mediaUrl}\n\n` +
-      `> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ DAWENS BOY🩸* 🤍`
+      `> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ DAWENS BOY* 🤍`
     );
 
   } catch (error) {
