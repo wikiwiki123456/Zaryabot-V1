@@ -15,21 +15,21 @@ AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
 // make true if you want auto reply on status 
 AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY ZARYA-MD*",
 // set the auto reply massage on status reply  
-WELCOME: process.env.WELCOME || "true",
+WELCOME: process.env.WELCOME || "false",
 // true if want welcome and goodbye msg in groups    
-ADMIN_EVENTS: process.env.ADMIN_EVENTS || "false",
+ADMIN_EVENTS: process.env.ADMIN_EVENTS || "true",
 // make true to know who dismiss or promoted a member in group
 ANTI_LINK: process.env.ANTI_LINK || "true",
 // make anti link true,false for groups 
 MENTION_REPLY: process.env.MENTION_REPLY || "false",
 // make true if want auto voice reply if someone menetion you 
-MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/pbamxw.jpeg",
+MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/4imyua.jpg",
 // add custom menu and mention reply image url
 PREFIX: process.env.PREFIX || "™",
 // add your prifix for bot   
-BOT_NAME: process.env.BOT_NAME || "ZARYA-MD",
+BOT_NAME: process.env.BOT_NAME || "🇲 🇷 🌴🇸 🇰 🇾🧃✨ᵀᴾˢᵀ🔱",
 // add bot namw here for menu
-STICKER_NAME: process.env.STICKER_NAME || "ZARYA-MD",
+STICKER_NAME: process.env.STICKER_NAME || "🇲 🇷 🌴🇸 🇰 🇾🧃✨ᵀᴾˢᵀ🔱",
 // type sticker pack name 
 CUSTOM_REACT: process.env.CUSTOM_REACT || "false",
 // make this true for custum emoji react    
@@ -39,11 +39,11 @@ DELETE_LINKS: process.env.DELETE_LINKS || "false",
 // automatic delete links witho remove member 
 OWNER_NUMBER: process.env.OWNER_NUMBER || "50942241547",
 // add your bot owner number
-OWNER_NAME: process.env.OWNER_NAME || "DAWENS BOY",
+OWNER_NAME: process.env.OWNER_NAME || "🇲 🇷 🌴🇸 🇰 🇾🧃✨ᵀᴾˢᵀ🔱",
 // add bot owner name
 DESCRIPTION: process.env.DESCRIPTION || "*© ᴘᴏᴡᴇʀᴇᴅ by dawens boy*",
 // add bot owner name    
-ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/pbamxw.jpeg",
+ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/4imyua.jpg",
 // add img for alive msg
 LIVE_MSG: process.env.LIVE_MSG || "> Zinda Hun Yar *ZARYA-MD*⚡",
 // add alive msg here 
@@ -51,15 +51,15 @@ READ_MESSAGE: process.env.READ_MESSAGE || "false",
 // Turn true or false for automatic read msgs
 AUTO_REACT: process.env.AUTO_REACT || "false",
 // make this true or false for auto react on all msgs
-ANTI_BAD: process.env.ANTI_BAD || "false",
+ANTI_BAD: process.env.ANTI_BAD || "true",
 // false or true for anti bad words  
 MODE: process.env.MODE || "public",
 // make bot public-private-inbox-group 
-ANTI_LINK_KICK: process.env.ANTI_LINK_KICK || "false",
+ANTI_LINK_KICK: process.env.ANTI_LINK_KICK || "true",
 // make anti link true,false for groups 
 AUTO_VOICE: process.env.AUTO_VOICE || "false",
 // make true for send automatic voices
-AUTO_STICKER: process.env.AUTO_STICKER || "false",
+AUTO_STICKER: process.env.AUTO_STICKER || "true",
 // make true for automatic stickers 
 AUTO_REPLY: process.env.AUTO_REPLY || "false",
 // make true or false automatic text reply 
@@ -77,6 +77,6 @@ ANTI_VV: process.env.ANTI_VV || "true",
 // true for anti once view 
 ANTI_DEL_PATH: process.env.ANTI_DEL_PATH || "same", 
 // change it to 'same' if you want to resend deleted message in same chat 
-AUTO_RECORDING: process.env.AUTO_RECORDING || "true"
+AUTO_RECORDING: process.env.AUTO_RECORDING || "false"
 // make it true for auto recoding 
 };
